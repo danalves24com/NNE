@@ -1,0 +1,71 @@
+<!DOCTYPE html>    
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            
+<h1>NNE</h1>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h3>Encryption</h3>
+            <input class='form-control' type="text" id="encIn" placeholder="Message to encrypt"><button class="btn-primary" onclick="encryptMEssage()">ENCRYPT</button><br>
+            <br>
+            <textarea class="form-control" style="margin-top: 0px; margin-bottom: 0px; height: 386px;" id="res">Encrypted message...</textarea>
+        </div>
+        
+        <div class="col-sm-6">
+            <h3>Decryption</h3>
+            <input class='form-control' type="text" id="decIn" placeholder="Hash to decrypt">
+            <button class="btn-primary" onclick="decryptMEssage()">DECRYPT</button>        
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-12">                           
+            <img src="sc.png" width="100%"></img>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
+<script src="script.js"></script>
+<script>    
+$("#res").hide()
+//neural net inspired encryption
+//encrypt($("#encIn").val(), parseInt($("#seed").val())).toString()
+    function encryptMEssage() {
+        //alert(encrypt($("#encIn").val(), seed))
+        console.log(encrypt($("#encIn").val(), parseInt($("#seed").val())))
+        $("#res").show()
+        $("#res").html(encrypt($("#encIn").val(), Math.floor(100000 + Math.random() * 900000)).toString())        
+        //alert("Copied the message: " + encrypt($("#encIn").val(), parseInt($("#seed").val())).toString());
+    }
+    function decryptMEssage() {
+        let decin = atob($("#decIn").val()).split(",")
+        alert("decrypted message: " + decrypt(decin))
+    }
+    
+     //public key
+
+</script>
+<style>
+    #res {
+        width: 100%;
+        color: rebeccapurple;
+        
+    }
+</style>
